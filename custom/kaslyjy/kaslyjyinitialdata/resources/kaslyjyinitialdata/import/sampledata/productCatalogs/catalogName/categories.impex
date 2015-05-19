@@ -1,0 +1,92 @@
+# ImpEx for Importing Categories
+
+# Macros / Replacement Parameter definitions
+$productCatalog=kaslyProductCatalog
+$productCatalogName=Kasly Jiayou Product Catalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+
+# Insert Categories
+INSERT_UPDATE Category;code[unique=true];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;healthCareProducts;;
+;deepure;;
+;auxiliaryProducts;;
+;liquor;;
+;cosmeticProducts;;
+;healthCareFoods;;
+;otherProducts;;
+;textile;;
+;tea;;
+;water;;
+;promoTool;;
+;presswork;;
+;fengTan;;
+;guoTai;;
+;jinShi;;
+;shengHeFang;;
+;xiangYao;;
+;group;;
+;skinCareProducts;;
+;teethCareProducts;;
+;bodyCareProducts;;
+;hairCareProducts;;
+;functionalCareFoods;;
+;TCareFoods;;
+;nutritiousFoods;;
+;socks;;
+;PuerTeaJane;;
+;smallMoleculeWater ;;
+;productTools;;
+;brandingTools;;
+;disk;;
+;poster;;
+;magazine;;
+;voucher;;
+;foldPage;;
+;fengTanWine;;
+;guotaiFiftyYearWine;;
+;guotaiFiveYearWine;;
+;shiyiGuotaiWine;;
+;jinshiWine;;
+;shenghefangWine;;
+;xiangyaoWine;;
+;deepureGroup;;
+;auxiliaryProductsGroup;;
+;mashupGroup;;
+;liquorGroup;;
+;cosmeticProductsGroup;;
+;nutritiousGroup;;
+;dilanLightSeries;;
+;dilanTimeSeries;;
+;dilanWaterSeries;;
+;mansBeautySeries;;
+;nuojieaoSeries;;
+;xiafannaSeries;;
+;yidekangSeries;;
+;toothpaste;;
+;easyTake;;
+;jinliSeries;;
+;liangziSeries;;
+;shuyiSeries;;
+;danshenSeries;;
+;jinlijiaoyanSeries;;
+;changxinjiaonang;;
+;danbaifen;;
+;jishijiu;;
+;jiuzunganzhi;;
+;kunchun;;
+;maixikang;;
+;renshenyuan;;
+;runsheng;;
+;titaijianling;;
+;qishencha;;
+;yishengjun;;
+;yinxingye;;
+
+
+
+
+# Insert Category Structure
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
